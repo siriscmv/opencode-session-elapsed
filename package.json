@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "opencode-session-elapsed",
+  "version": "0.1.0",
+  "description": "OpenCode TUI plugin that shows session elapsed, cumulative work, and response timers in the prompt line.",
+  "type": "module",
+  "exports": {
+    "./tui": {
+      "types": "./src/index.tsx",
+      "import": "./src/index.tsx"
+    }
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siriscmv/opencode-session-elapsed.git"
+  },
+  "homepage": "https://github.com/siriscmv/opencode-session-elapsed#readme",
+  "bugs": {
+    "url": "https://github.com/siriscmv/opencode-session-elapsed/issues"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "opencode-tui",
+    "tui",
+    "timer",
+    "elapsed",
+    "time",
+    "stopwatch"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Siris",
+    "email": "40269790+siriscmv@users.noreply.github.com",
+    "url": "https://github.com/siriscmv"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "prepublishOnly": "bun run typecheck && bun test"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.18.0",
+    "@opentui/core": ">=0.4.5",
+    "@opentui/solid": ">=0.4.5",
+    "solid-js": "^1.9.0"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "1.18.17",
+    "@opentui/core": ">=0.4.5",
+    "@opentui/keymap": ">=0.4.5",
+    "@opentui/solid": ">=0.4.5",
+    "@types/bun": "^1.3.14",
+    "@types/node": "^26.2.0",
+    "solid-js": "^1.9.12",
+    "typescript": "^5.6.0"
+  }
+}
