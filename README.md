@@ -2,9 +2,9 @@
 
 A [OpenCode](https://opencode.ai) TUI plugin that shows live timers in the prompt line:
 
-- **◷ Session elapsed** — how long the current session has been open
-- **⚙ Work time** — total time the assistant has been generating (cumulative across the session)
-- **⚡ Response time** — time for the current/last response (live while generating, then finalized)
+- **◷ Session elapsed**: how long the current session has been open
+- **⚙ Work time**: total time the assistant has been generating (cumulative across the session)
+- **⚡ Response time**: time for the current/last response (live while generating, then finalized)
 
 ```
   ◷ 2h 3m   ⚙ 1h 12m   ✓ 45s
@@ -12,7 +12,7 @@ A [OpenCode](https://opencode.ai) TUI plugin that shows live timers in the promp
 
 ![Demo](assets/screenshot.png)
 
-All timers are optional, configurable, and safe to keep on — they disappear automatically when there is nothing to show.
+All timers are optional, configurable, and safe to keep on: they disappear automatically when there is nothing to show.
 
 ## Requirements
 
@@ -32,7 +32,7 @@ Add the plugin to the TUI config in `~/.config/opencode/tui.json`:
 }
 ```
 
-Restart OpenCode. Done — you'll see the timers in the prompt line.
+Restart OpenCode. Done: you'll see the timers in the prompt line.
 
 ### From source
 
@@ -49,7 +49,7 @@ git clone https://github.com/siriscmv/opencode-session-elapsed.git
 }
 ```
 
-Restart OpenCode. Done — you'll see the timers in the prompt line.
+Restart OpenCode. Done: you'll see the timers in the prompt line.
 
 ## Configure
 
@@ -118,9 +118,9 @@ Minimal, no icons:
 
 The plugin subscribes to TUI session state and ticks a 1s timer:
 
-- **Session elapsed** — now minus the session's `time.created`.
-- **Work time** — sums `assistant.time.completed - assistant.time.created` over every assistant message; the in-progress message is counted live while the session is busy.
-- **Response time** — time from the last user message to the last assistant message completion (or the live elapsed time while still generating).
+- **Session elapsed**: now minus the session's `time.created`.
+- **Work time**: sums `assistant.time.completed - assistant.time.created` over every assistant message; the in-progress message is counted live while the session is busy.
+- **Response time**: time from the last user message to the last assistant message completion (or the live elapsed time while still generating).
 
 ## Development
 

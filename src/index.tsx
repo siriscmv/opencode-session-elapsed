@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { RGBA } from "@opentui/core"
 import type { TuiPlugin, TuiPluginApi, TuiThemeCurrent } from "@opencode-ai/plugin/tui"
 import { createEffect, createSignal, onCleanup, Show } from "solid-js"

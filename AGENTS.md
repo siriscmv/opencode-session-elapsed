@@ -43,6 +43,11 @@ Always run `bun run typecheck` and `bun test` after changes; both must pass.
 
 ## Gotchas
 
+- `src/index.tsx` must start with the `/** @jsxImportSource @opentui/solid */`
+  pragma. The published plugin ships TSX that loads from `node_modules`, where
+  opencode's Solid transform plugin does not run; without the pragma, Bun falls
+  back to a default JSX runtime and the module fails to import, so opencode
+  silently drops the plugin. Do not move it into tsconfig-only config.
 - `RGBA.fromHex` throws on invalid input — always guard color overrides with the
   `resolveColor` helper in `src/index.tsx`.
 - `slot` options without a `session_id` prop (`home_prompt_right`, `app_bottom`)
