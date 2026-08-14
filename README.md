@@ -19,9 +19,22 @@ All timers are optional, configurable, and safe to keep on — they disappear au
 
 ## Install
 
-### From source (current)
+### From npm
 
-Clone the repo and reference the plugin file directly in `~/.config/opencode/tui.json`:
+Add the plugin to the TUI config in `~/.config/opencode/tui.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "plugin": ["opencode-session-elapsed"]
+}
+```
+
+Restart OpenCode. Done — you'll see the timers in the prompt line.
+
+### From source
+
+Clone the repo and reference the plugin file directly:
 
 ```bash
 git clone https://github.com/siriscmv/opencode-session-elapsed.git
