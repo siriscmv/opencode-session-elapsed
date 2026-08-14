@@ -36,15 +36,6 @@ git clone https://github.com/siriscmv/opencode-session-elapsed.git
 
 Restart OpenCode. Done — you'll see the timers in the prompt line.
 
-### From npm (once published)
-
-```json
-{
-  "$schema": "https://opencode.ai/tui.json",
-  "plugin": ["opencode-session-elapsed"]
-}
-```
-
 ## Configure
 
 Pass options as a tuple entry. All options are optional; defaults are shown below.
@@ -123,15 +114,6 @@ bun install
 bun run typecheck   # TypeScript checks
 bun test            # unit tests (formatting)
 ```
-
-## Publishing
-
-```bash
-npm login          # requires one-time-password auth (web/browser flow)
-npm publish        # runs typecheck + tests first (prepublishOnly)
-```
-
-The package publishes the raw `.tsx` under the `./tui` export, following the pattern used by other OpenCode TUI plugins. `@opencode-ai/plugin`, `@opentui/core`, `@opentui/solid`, and `solid-js` are peer dependencies so OpenCode reuses its own bundled instances.
 
 ## License
 
