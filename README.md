@@ -10,6 +10,8 @@ A [OpenCode](https://opencode.ai) TUI plugin that shows live timers in the promp
   ◷ 2h 3m   ⚙ 1h 12m   ✓ 45s
 ```
 
+![Demo](assets/screenshot.png)
+
 All timers are optional, configurable, and safe to keep on — they disappear automatically when there is nothing to show.
 
 ## Requirements
