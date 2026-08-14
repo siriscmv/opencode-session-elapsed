@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "opencode-session-elapsed",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OpenCode TUI plugin that shows session elapsed, cumulative work, and response timers in the prompt line.",
   "type": "module",
   "exports": {
@@ -11,7 +11,8 @@
     }
   },
   "files": [
-    "src"
+    "src",
+    "assets/screenshot.png"
   ],
   "repository": {
     "type": "git",
