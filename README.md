@@ -128,6 +128,7 @@ The plugin subscribes to TUI session state and ticks a 1s timer:
 bun install
 bun run typecheck   # TypeScript checks
 bun test            # unit tests (formatting)
+bun run build       # bundle to dist/ (run before publishing)
 ```
 
 ## License

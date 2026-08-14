@@ -16,9 +16,12 @@ server-side code and no build step for consumers.
 - `src/options.ts` — the `Options` type, defaults, and `normalizeOptions()`.
 - `src/format.ts` — pure, unit-tested duration formatting (`compact`/`full`).
 - `test/format.test.ts` — `bun:test` tests for `formatElapsed`.
-- `package.json` — exports only `./tui` → `./src/index.tsx`; the four runtime
-  dependencies are declared as peer dependencies so OpenCode reuses its own
-  bundled instances (do not move them to `dependencies`).
+- `tsconfig.build.json` — declaration-only config for `bun run build` (rooted at
+  `src`, emits `.d.ts` into `dist/` next to the bundle).
+- `dist/` — build output (gitignored, produced on publish).
+- `package.json` — exports `./tui` → `./dist/index.js` (+ types); the four
+  runtime dependencies are declared as peer dependencies so OpenCode reuses its
+  own bundled instances (do not move them to `dependencies`).
 
 ## Commands
 
@@ -26,14 +29,18 @@ server-side code and no build step for consumers.
 bun install        # install dev dependencies
 bun run typecheck  # tsc --noEmit
 bun test           # bun:test unit tests
+bun run build      # bundle src/index.tsx to dist/index.js + emit .d.ts
 ```
 
 Always run `bun run typecheck` and `bun test` after changes; both must pass.
+Run `bun run build` before publishing or before manually testing the
+`./tui` export from `node_modules`.
 
 ## Conventions
 
 - TypeScript strict mode. Do not relax `strict`.
-- JSX is Solid (`jsxImportSource: "solid-js"`); keep the `tsconfig.json` preset.
+- JSX is Solid (`jsxImportSource: "@opentui/solid"`); keep the `tsconfig.json`
+  preset.
 - All user-facing options must keep the documented defaults (see README table)
   and round-trip through `normalizeOptions` so unknown/partial configs are safe.
 - Default behavior must stay byte-for-byte compatible with the original
@@ -48,6 +55,13 @@ Always run `bun run typecheck` and `bun test` after changes; both must pass.
   opencode's Solid transform plugin does not run; without the pragma, Bun falls
   back to a default JSX runtime and the module fails to import, so opencode
   silently drops the plugin. Do not move it into tsconfig-only config.
+- The published `./tui` entry must be the **precompiled** `dist/index.js`, never
+  the raw `src/index.tsx`. opencode skips its Solid transform for files under
+  `node_modules`, so Bun natively resolves the JSX-generated
+  `@opentui/solid/jsx-dev-runtime` import as a real package and fails to find
+  it. Compiling via `bun run build` emits explicit `jsxDEV` imports that the
+  opencode runtime plugin rewrites to its bundled modules. Never point
+  `exports["./tui"]` at `./src/index.tsx`.
 - `RGBA.fromHex` throws on invalid input — always guard color overrides with the
   `resolveColor` helper in `src/index.tsx`.
 - `slot` options without a `session_id` prop (`home_prompt_right`, `app_bottom`)
