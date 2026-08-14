@@ -19,7 +19,24 @@ All timers are optional, configurable, and safe to keep on — they disappear au
 
 ## Install
 
-Add the plugin to the TUI config in `~/.config/opencode/tui.json`:
+### From source (current)
+
+Clone the repo and reference the plugin file directly in `~/.config/opencode/tui.json`:
+
+```bash
+git clone https://github.com/siriscmv/opencode-session-elapsed.git
+```
+
+```json
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "plugin": ["file:///path/to/opencode-session-elapsed/src/index.tsx"]
+}
+```
+
+Restart OpenCode. Done — you'll see the timers in the prompt line.
+
+### From npm (once published)
 
 ```json
 {
@@ -27,16 +44,6 @@ Add the plugin to the TUI config in `~/.config/opencode/tui.json`:
   "plugin": ["opencode-session-elapsed"]
 }
 ```
-
-Restart OpenCode. Done — you'll see the timers in the prompt line.
-
-> **No npm?** You can also install from source: clone this repo and reference the file directly:
->
-> ```json
-> {
->   "plugin": ["file:///path/to/opencode-session-elapsed/src/index.tsx"]
-> }
-> ```
 
 ## Configure
 
@@ -120,8 +127,8 @@ bun test            # unit tests (formatting)
 ## Publishing
 
 ```bash
-npm login
-npm publish         # runs typecheck + tests first (prepublishOnly)
+npm login          # requires one-time-password auth (web/browser flow)
+npm publish        # runs typecheck + tests first (prepublishOnly)
 ```
 
 The package publishes the raw `.tsx` under the `./tui` export, following the pattern used by other OpenCode TUI plugins. `@opencode-ai/plugin`, `@opentui/core`, `@opentui/solid`, and `solid-js` are peer dependencies so OpenCode reuses its own bundled instances.

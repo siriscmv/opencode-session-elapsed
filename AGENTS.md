@@ -55,5 +55,11 @@ Always run `bun run typecheck` and `bun test` after changes; both must pass.
 
 - This repo's npm package name is `opencode-session-elapsed` (owner `siriscmv`).
 - `npm publish` runs typecheck + tests automatically via `prepublishOnly`.
+- The npm account requires one-time-password (web) auth for publishing, which
+  cannot be done non-interactively: the auth URL is redacted when npm's stdout
+  is not a TTY. A human must run `npm publish` (or `npm login`) in their own
+  terminal and complete the browser prompt.
 - Bump `package.json` `version` and tag the release before publishing; keep the
   version in sync with the GitHub release.
+- Not yet published to npm (as of 2026-08-14); the README currently documents
+  install from source. Publish and flip the README install order once live.
